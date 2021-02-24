@@ -24,7 +24,7 @@ const minLength = (len) => (val) => val && val.length >= len;
 function RenderCampsite({ campsite }) {
 	return (
 		<div className="col-md-5 m-1">
-            <FadeTransform
+            <Fade
                 in
                 transformProps={{
                     exitTransform: 'scale(0.5) translateY(-50%)'
@@ -35,7 +35,7 @@ function RenderCampsite({ campsite }) {
                         <CardText>{campsite.description}</CardText>
                     </CardBody>
                 </Card>
-            </FadeTransform>
+            </Fade>
         </div>
 	);
 }
@@ -48,7 +48,7 @@ function RenderComments({ comments, postComment, campsiteId }) {
 				<Stagger in>
 					{comments.map((comment) => {
 						return (
-							<Fade in key={comment.id}>
+							<FadeTransform in key={comment.id}>
 								<div>
 									<p>
 										{comment.text}
@@ -61,7 +61,7 @@ function RenderComments({ comments, postComment, campsiteId }) {
 										}).format(new Date(Date.parse(comment.date)))}
 									</p>
 								</div>
-							</Fade>
+							</FadeTransform>
 						);
 					})}
 				</Stagger>
